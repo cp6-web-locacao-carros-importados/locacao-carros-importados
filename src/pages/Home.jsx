@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import Card from '../components/Card'
+import carros from '../data/carros'
 
 const diferenciais = [
   { titulo: 'Frota premium', texto: 'Modelos importados de marcas alemãs, italianas, britânicas e mais.' },
@@ -7,6 +9,8 @@ const diferenciais = [
 ]
 
 function Home() {
+  const destaques = carros.slice(0, 3)
+
   return (
     <>
       <section className="relative overflow-hidden">
@@ -37,6 +41,20 @@ function Home() {
             <p className="text-sm text-zinc-400">{item.texto}</p>
           </div>
         ))}
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-20">
+        <div className="mb-6 flex items-end justify-between">
+          <h2 className="text-2xl font-bold">Destaques da semana</h2>
+          <Link to="/carros" className="text-sm text-amber-400 hover:underline">
+            Ver todos →
+          </Link>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {destaques.map((carro) => (
+            <Card key={carro.id} carro={carro} />
+          ))}
+        </div>
       </section>
     </>
   )
