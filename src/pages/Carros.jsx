@@ -4,7 +4,7 @@ import carros from '../data/carros'
 
 const categorias = ['Todos', ...new Set(carros.map((carro) => carro.categoria))]
 
-function Carros() {
+function Carros({ carrinho, onAlugar }) {
   const [categoria, setCategoria] = useState('Todos')
   const [busca, setBusca] = useState('')
 
@@ -51,7 +51,12 @@ function Carros() {
       {carrosFiltrados.length > 0 ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {carrosFiltrados.map((carro) => (
-            <Card key={carro.id} carro={carro} />
+            <Card
+              key={carro.id}
+              carro={carro}
+              onAlugar={() => onAlugar(carro)}
+              noCarrinho={carrinho.some((item) => item.carro.id === carro.id)}
+            />
           ))}
         </div>
       ) : (

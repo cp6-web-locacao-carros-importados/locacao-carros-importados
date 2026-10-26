@@ -8,7 +8,7 @@ const diferenciais = [
   { titulo: 'Entrega no local', texto: 'Levamos o carro até você, no aeroporto, hotel ou em casa.' },
 ]
 
-function Home() {
+function Home({ carrinho, onAlugar }) {
   const destaques = carros.slice(0, 3)
 
   return (
@@ -52,7 +52,12 @@ function Home() {
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {destaques.map((carro) => (
-            <Card key={carro.id} carro={carro} />
+            <Card
+              key={carro.id}
+              carro={carro}
+              onAlugar={() => onAlugar(carro)}
+              noCarrinho={carrinho.some((item) => item.carro.id === carro.id)}
+            />
           ))}
         </div>
       </section>
