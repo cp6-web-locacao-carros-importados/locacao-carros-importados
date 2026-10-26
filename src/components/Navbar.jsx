@@ -41,11 +41,11 @@ function Navbar({
   return (
     <>
       <header className="sticky top-0 z-10 border-b border-zinc-800 bg-zinc-950/90 backdrop-blur">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-2 px-4 py-4">
           <NavLink to="/" className="text-xl font-bold tracking-tight">
             Imported<span className="text-amber-500">Rent</span>
           </NavLink>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <NavLink to="/" end className={linkClass}>
               Home
             </NavLink>
@@ -77,7 +77,7 @@ function Navbar({
             className="absolute inset-0 bg-zinc-950/70"
           />
 
-          <aside className="relative flex h-full w-96 flex-col bg-zinc-900">
+          <aside className="relative flex h-full w-full flex-col bg-zinc-900 sm:w-96">
             <div className="flex items-center justify-between border-b border-zinc-800 px-5 py-4">
               <h2 className="text-lg font-semibold">Seu carrinho</h2>
               <button
@@ -124,7 +124,7 @@ function Navbar({
                         </button>
                       </div>
 
-                      <div className="mt-3 flex items-center justify-between">
+                      <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
                         <div className="flex items-center gap-2">
                           <button
                             type="button"
@@ -164,7 +164,7 @@ function Navbar({
                     {total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                   </span>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col gap-2 sm:flex-row">
                   <button
                     type="button"
                     onClick={onLimparCarrinho}
