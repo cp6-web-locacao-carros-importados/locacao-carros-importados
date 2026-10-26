@@ -1,4 +1,4 @@
-function Card({ carro }) {
+function Card({ carro, onAlugar, noCarrinho }) {
   const { marca, modelo, ano, categoria, origem, potencia, diaria, imagem } = carro
 
   return (
@@ -36,9 +36,15 @@ function Card({ carro }) {
           </p>
           <button
             type="button"
-            className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-amber-400"
+            onClick={onAlugar}
+            disabled={noCarrinho}
+            className={`rounded-lg px-4 py-2 text-sm font-semibold transition ${
+              noCarrinho
+                ? 'cursor-not-allowed bg-zinc-800 text-zinc-500'
+                : 'bg-amber-500 text-zinc-950 hover:bg-amber-400'
+            }`}
           >
-            Alugar
+            {noCarrinho ? 'No carrinho' : 'Alugar'}
           </button>
         </div>
       </div>
