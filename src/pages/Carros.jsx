@@ -48,11 +48,15 @@ function Carros() {
         />
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {carrosFiltrados.map((carro) => (
-          <Card key={carro.id} carro={carro} />
-        ))}
-      </div>
+      {carrosFiltrados.length > 0 ? (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {carrosFiltrados.map((carro) => (
+            <Card key={carro.id} carro={carro} />
+          ))}
+        </div>
+      ) : (
+        <p className="py-20 text-center text-zinc-400">Nenhum carro encontrado.</p>
+      )}
     </section>
   )
 }
